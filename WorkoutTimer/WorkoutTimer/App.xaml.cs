@@ -11,7 +11,11 @@ namespace WorkoutTimer
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = Color.FromHex("#808080"),
+                BarTextColor = Color.White
+            };
         }
 
         protected override void OnStart()

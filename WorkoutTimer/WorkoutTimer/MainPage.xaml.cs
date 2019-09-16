@@ -13,5 +13,10 @@ namespace WorkoutTimer
         {
             InitializeComponent();
         }
+
+        private void Settings_Clicked (object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SettingsPage());
+        }
     }
 }
