@@ -16,5 +16,10 @@ namespace WorkoutTimer
 		{
 			InitializeComponent ();
 		}
+
+        private void ButtonSettingsConfirm_Clicked(object sender, EventArgs args)
+        {
+            labConfirm.Text = "Confirmed!!!";
+        }
 	}
 }

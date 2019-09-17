@@ -6,11 +6,126 @@
              BackgroundColor="BlueViolet">
     <ContentPage.Content>
         <StackLayout>
+            <Label Margin="0, 20, 0, 0"
+                   Text="Please choose a Set-Time:"
+                   HorizontalOptions="CenterAndExpand" 
+                   FontAttributes="Bold"
+                   TextColor="White"/>
             
-            <Label Text="Settings-Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                TextColor="White"/>
+            <Grid Margin="100, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Minutes"
+                       Margin="0"
+                       Parent="0"
+                       TextColor="White"
+                       HorizontalOptions="CenterAndExpand"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+
+                <Label Text="Seconds"
+                       Margin="0"
+                       Parent="0"
+                       TextColor="White"
+                       HorizontalOptions="CenterAndExpand"
+                       Grid.Row="0"
+                       Grid.Column="1"/>
+
+                <Frame BorderColor="White"
+                       CornerRadius="8"
+                       BackgroundColor="CornflowerBlue"
+                       Margin="0"
+                       Padding="0"
+                       Grid.Row="1"
+                       Grid.Column="0">
+                    <Entry x:Name="entrySetMinutes"
+                       Text="10"
+                       HorizontalTextAlignment="Center"
+                       MaxLength="2"
+                       Keyboard="Numeric"/>
+                </Frame>
+
+                <Frame BorderColor="White"
+                       CornerRadius="8"
+                       BackgroundColor="CornflowerBlue"
+                       Margin="0"
+                       Padding="0"
+                       Grid.Row="1"
+                       Grid.Column="1">
+                    <Entry x:Name="entrySetSeconds"
+                       Text="00"
+                       HorizontalTextAlignment="Center"
+                       MaxLength="2"
+                       Keyboard="Numeric"/>
+                </Frame>
+            </Grid>
+
+            <Label Margin="0, 20, 0, 0" 
+                   Text="Please choose a Pause-Time:"
+                   HorizontalOptions="CenterAndExpand" 
+                   FontAttributes="Bold"
+                   TextColor="White"/>
+            
+            <Grid Margin="100, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Minutes"
+                       Margin="0"
+                       Parent="0"
+                       TextColor="White"
+                       HorizontalOptions="CenterAndExpand"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+
+                <Label Text="Seconds"
+                       Margin="0"
+                       Parent="0"
+                       TextColor="White"
+                       HorizontalOptions="CenterAndExpand"
+                       Grid.Row="0"
+                       Grid.Column="1"/>
+
+                <Frame BorderColor="White"
+                       CornerRadius="8"
+                       BackgroundColor="CornflowerBlue"
+                       Margin="0"
+                       Padding="0"
+                       Grid.Row="1"
+                       Grid.Column="0">
+                    <Entry x:Name="entryPauseMinutes"
+                       Text="02"
+                       HorizontalTextAlignment="Center"
+                       MaxLength="2"
+                       Keyboard="Numeric"/>
+                </Frame>
+
+                <Frame BorderColor="White"
+                       CornerRadius="8"
+                       BackgroundColor="CornflowerBlue"
+                       Margin="0"
+                       Padding="0"
+                       Grid.Row="1"
+                       Grid.Column="1">
+                    <Entry x:Name="entryPauseSeconds"
+                       Text="00"
+                       HorizontalTextAlignment="Center"
+                       MaxLength="2"
+                       Keyboard="Numeric"/>
+                </Frame>
+            </Grid>
+
+            <Button Margin="40, 20"
+                    x:Name="buttonSettingsConfirm"
+                    Clicked="ButtonSettingsConfirm_Clicked"
+                    Text="Save Settings"
+                    VerticalOptions="Fill"/>
+
+            <Label x:Name="labConfirm"
+                   Text="Not Confirmed"
+                   TextColor="White"
+                   HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
