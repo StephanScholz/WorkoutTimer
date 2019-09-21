@@ -9,18 +9,18 @@ namespace WorkoutTimer
 {
     public partial class MainPage : ContentPage
     {
-        SettingsPage settings;
+        SettingsPage settingsPage;
 
         public MainPage()
         {
             InitializeComponent();
 
-            settings = new SettingsPage();
+            settingsPage = new SettingsPage();
         }
 
         private void Settings_Clicked (object sender, EventArgs e)
         {
-            Navigation.PushAsync(settings);
+            Navigation.PushAsync(settingsPage);
         }
     }
 }

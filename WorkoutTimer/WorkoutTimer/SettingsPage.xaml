@@ -40,10 +40,11 @@
                        Grid.Row="1"
                        Grid.Column="0">
                     <Entry x:Name="entrySetMinutes"
-                       Text="10"
-                       HorizontalTextAlignment="Center"
-                       MaxLength="2"
-                       Keyboard="Numeric"/>
+                           Text="10"
+                           HorizontalTextAlignment="Center"
+                           MaxLength="2"
+                           Keyboard="Numeric"
+                           Completed="OnSettingsEntryCompleted"/>
                 </Frame>
 
                 <Frame BorderColor="White"
@@ -54,10 +55,11 @@
                        Grid.Row="1"
                        Grid.Column="1">
                     <Entry x:Name="entrySetSeconds"
-                       Text="00"
-                       HorizontalTextAlignment="Center"
-                       MaxLength="2"
-                       Keyboard="Numeric"/>
+                           Text="00"
+                           HorizontalTextAlignment="Center"
+                           MaxLength="2"
+                           Keyboard="Numeric"
+                           Completed="OnSettingsEntryCompleted"/>
                 </Frame>
             </Grid>
 
@@ -95,10 +97,11 @@
                        Grid.Row="1"
                        Grid.Column="0">
                     <Entry x:Name="entryPauseMinutes"
-                       Text="02"
-                       HorizontalTextAlignment="Center"
-                       MaxLength="2"
-                       Keyboard="Numeric"/>
+                           Text="02"
+                           HorizontalTextAlignment="Center"
+                           MaxLength="2"
+                           Keyboard="Numeric"
+                           Completed="OnSettingsEntryCompleted"/>
                 </Frame>
 
                 <Frame BorderColor="White"
@@ -109,10 +112,11 @@
                        Grid.Row="1"
                        Grid.Column="1">
                     <Entry x:Name="entryPauseSeconds"
-                       Text="00"
-                       HorizontalTextAlignment="Center"
-                       MaxLength="2"
-                       Keyboard="Numeric"/>
+                           Text="00"
+                           HorizontalTextAlignment="Center"
+                           MaxLength="2"
+                           Keyboard="Numeric"
+                           Completed="OnSettingsEntryCompleted"/>
                 </Frame>
             </Grid>
 
