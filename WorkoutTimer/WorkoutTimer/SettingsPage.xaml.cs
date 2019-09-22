@@ -13,16 +13,16 @@ namespace WorkoutTimer
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SettingsPage : ContentPage
 	{
-        private Preferences preferences { get; set; }
+        public Preferences Preferences { get; set; }
 
 		public SettingsPage ()
 		{
 			InitializeComponent ();
-            preferences = new Preferences(Application.Current.Properties);
-            entryPauseMinutes.Text = preferences.PauseMinutes.ToString();
-            entryPauseSeconds.Text = preferences.PauseSeconds.ToString();
-            entrySetMinutes.Text = preferences.SetMinutes.ToString();
-            entrySetSeconds.Text = preferences.SetSeconds.ToString();
+            Preferences = new Preferences(Application.Current.Properties);
+            entryPauseMinutes.Text = Preferences.PauseMinutes.ToString();
+            entryPauseSeconds.Text = Preferences.PauseSeconds.ToString();
+            entrySetMinutes.Text = Preferences.SetMinutes.ToString();
+            entrySetSeconds.Text = Preferences.SetSeconds.ToString();
         }
 
         private void ButtonSettingsConfirm_Clicked(object sender, EventArgs args)
@@ -33,7 +33,7 @@ namespace WorkoutTimer
                 entrySetMinutes.Text,
                 entrySetSeconds.Text };
 
-            if (preferences.Save(prefs))
+            if (Preferences.Save(prefs))
             {
                 DisplayAlert("Success", "All preferences saved!", "OK");
             }

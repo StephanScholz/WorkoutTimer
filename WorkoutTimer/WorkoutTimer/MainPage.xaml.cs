@@ -22,5 +22,16 @@ namespace WorkoutTimer
         {
             Navigation.PushAsync(settingsPage);
         }
+
+        private void SetTimeButton_Clicked (object sender, EventArgs e)
+        {
+            setTime.Text = settingsPage.Preferences.SetMinutes + ":" + settingsPage.Preferences.SetSeconds;
+            pauseTime.Text = settingsPage.Preferences.PauseMinutes + ":" + settingsPage.Preferences.PauseSeconds;
+        }
+
+        private void StartButton_Clicked (object sender, EventArgs e)
+        {
+            
+        }
     }
 }

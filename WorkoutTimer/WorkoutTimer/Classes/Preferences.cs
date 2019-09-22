@@ -5,7 +5,7 @@ using System.Text;
 namespace WorkoutTimer.Classes
 {
     // Stores all the user prefs in one class
-    class Preferences
+    public class Preferences
     {
         public int PauseMinutes { get; set; }
         public int PauseSeconds { get; set; }
