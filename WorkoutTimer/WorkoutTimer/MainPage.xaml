@@ -39,6 +39,12 @@
                 Margin="40, 0"
                 HorizontalOptions="Fill"/>
 
+        <Button x:Name="stopButton"
+                Clicked="StopButton_Clicked"
+                Text="Stop Timer"
+                Margin="40, 0"
+                HorizontalOptions="Fill"/>
+
     </StackLayout>
 
     <ContentPage.ToolbarItems>

@@ -44,7 +44,8 @@
                            HorizontalTextAlignment="Center"
                            MaxLength="2"
                            Keyboard="Numeric"
-                           Completed="OnSettingsEntryCompleted"/>
+                           Completed="OnSettingsEntryCompleted"
+                           Unfocused="OnSettingsEntryCompleted"/>
                 </Frame>
 
                 <Frame BorderColor="White"
@@ -59,7 +60,8 @@
                            HorizontalTextAlignment="Center"
                            MaxLength="2"
                            Keyboard="Numeric"
-                           Completed="OnSettingsEntryCompleted"/>
+                           Completed="OnSettingsEntryCompleted"
+                           Unfocused="OnSettingsEntryCompleted"/>
                 </Frame>
             </Grid>
 
@@ -101,7 +103,8 @@
                            HorizontalTextAlignment="Center"
                            MaxLength="2"
                            Keyboard="Numeric"
-                           Completed="OnSettingsEntryCompleted"/>
+                           Completed="OnSettingsEntryCompleted"
+                           Unfocused="OnSettingsEntryCompleted"/>
                 </Frame>
 
                 <Frame BorderColor="White"
@@ -116,7 +119,8 @@
                            HorizontalTextAlignment="Center"
                            MaxLength="2"
                            Keyboard="Numeric"
-                           Completed="OnSettingsEntryCompleted"/>
+                           Completed="OnSettingsEntryCompleted"
+                           Unfocused="OnSettingsEntryCompleted"/>
                 </Frame>
             </Grid>
 

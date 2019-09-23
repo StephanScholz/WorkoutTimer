@@ -67,8 +67,8 @@ namespace WorkoutTimer
             {
                 // check if input number > 60
                 int n = Convert.ToInt16(sb.ToString());
-                if (n > 60)
-                    entry.Text = "60";
+                if (n > 59)
+                    entry.Text = "59";
                 else
                     entry.Text = sb.ToString();
             }
