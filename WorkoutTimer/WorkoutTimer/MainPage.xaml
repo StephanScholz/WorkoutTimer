@@ -9,11 +9,23 @@
     <StackLayout>
         <!-- Place new controls here -->
 
-        <Label x:Name="setTime"
+        <Label x:Name="timer"
                Text="00:00" 
                FontSize="100"
                HorizontalOptions="Center"
                Margin="0, 50, 0, 0"
+               TextColor="White"/>
+
+
+        <Label Text="Set-Time:"
+               HorizontalOptions="Center"
+               FontSize="30"
+               TextColor="White"/>
+        
+        <Label x:Name="setTime"
+               Text="00:00"
+               FontSize="30"
+               HorizontalOptions="Center"
                TextColor="White"/>
 
         <Label Text="Pause-Time:"
@@ -27,21 +39,34 @@
                HorizontalOptions="Center"
                TextColor="White"/>
 
-        <Button x:Name="setTimeButton"
-                Clicked="SetTimeButton_Clicked"
-                Text="Set Time"
-                Margin="40, 0"
+        <Button x:Name="ResetTimerButton"
+                Clicked="ResetTimerButton_Clicked"
+                Text="Reset Timer"
+                BackgroundColor="#c7cc2b"
+                BorderColor="#505216"
+                BorderWidth="2"
+                CornerRadius="10"
+                Margin="40, 20, 40, 0"
                 HorizontalOptions="Fill"/>
 
-        <Button x:Name="startButton"
-                Clicked="StartButton_Clicked"
+        <Button x:Name="startWorkoutButton"
+                Clicked="StartWorkoutButton_Clicked"
                 Text="Start Timer"
-                Margin="40, 0"
+                BackgroundColor="#c7cc2b"
+                BorderColor="#505216"
+                BorderWidth="2"
+                CornerRadius="10"
+                Margin="40, 20"
                 HorizontalOptions="Fill"/>
 
-        <Button x:Name="stopButton"
-                Clicked="StopButton_Clicked"
-                Text="Stop Timer"
+        <Button x:Name="pauseButton"
+                Clicked="PauseButton_Clicked"
+                IsVisible="False"
+                Text="Pause"
+                BackgroundColor="#c7cc2b"
+                BorderColor="#505216"
+                BorderWidth="2"
+                CornerRadius="10"
                 Margin="40, 0"
                 HorizontalOptions="Fill"/>
 

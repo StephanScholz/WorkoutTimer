@@ -12,6 +12,7 @@ namespace WorkoutTimer
     {
         SettingsPage settingsPage;
         bool timer_started = false;
+        bool timer_paused = false;
         private CancellationTokenSource cancellation;
 
         public MainPage()
@@ -20,6 +21,14 @@ namespace WorkoutTimer
 
             settingsPage = new SettingsPage();
             cancellation = new CancellationTokenSource();
+
+            ResetTimer();
+        }
+
+        // returns "0" or an empty string, depending if number is bigger or smaller than 10
+        private string GetLeadingZero (int number)
+        {
+            return number < 10 ? "0" : "";
         }
 
         private void Settings_Clicked (object sender, EventArgs e)
@@ -27,36 +36,40 @@ namespace WorkoutTimer
             Navigation.PushAsync(settingsPage);
         }
 
-        private void SetTimeButton_Clicked (object sender, EventArgs e)
+        private void ResetTimerButton_Clicked (object sender, EventArgs e)
         {
-            if (timer_started) return;
+            timer_started = false;
+            timer_paused = false;
+            pauseButton.IsVisible = false;
             ResetTimer();
         }
 
         private void ResetTimer()
         {
-            //TODO: Refactor (make it smaller and more elegant)
-            //TODO: Leading zeros for pause-time
+            Interlocked.Exchange(ref cancellation, new CancellationTokenSource()).Cancel();
+
+            // Reset timer-label
             int minutes = settingsPage.Preferences.SetMinutes;
             int seconds = settingsPage.Preferences.SetSeconds;
-            string zeroMin = "";
-            string zeroSec = "";
-            if (minutes < 10)
-            {
-                zeroMin = "0";
-            }
-            if (seconds < 10)
-            {
-                zeroSec = "0";
-            }
-            setTime.Text = zeroMin + minutes.ToString() + ":" + zeroSec + seconds.ToString();
-            pauseTime.Text = settingsPage.Preferences.PauseMinutes + ":" + settingsPage.Preferences.PauseSeconds;
+            timer.Text = GetLeadingZero(minutes) + minutes.ToString() + ":" + GetLeadingZero(seconds) + seconds.ToString();
+
+            // Reset set-label
+            setTime.Text = GetLeadingZero(minutes) + minutes.ToString() + ":" + GetLeadingZero(seconds) + seconds.ToString();
+
+            // Reset pause-label
+            minutes = settingsPage.Preferences.PauseMinutes;
+            seconds = settingsPage.Preferences.PauseSeconds;
+            pauseTime.Text = GetLeadingZero(minutes) + minutes.ToString() + ":" + GetLeadingZero(seconds) + seconds.ToString();
         }
 
-        private void StartButton_Clicked (object sender, EventArgs e)
+        private void StartWorkoutButton_Clicked (object sender, EventArgs e)
         {
-            if (setTime.Text == "00:00") return;
+            if (timer.Text == "00:00") return;
+            if (timer_paused) return;
+
             timer_started = true;
+            pauseButton.IsVisible = true;
+
             int maxSeconds = (settingsPage.Preferences.SetMinutes * 60) + settingsPage.Preferences.SetSeconds;
             int minutes, seconds;
             int secondsElapsed = 0;
@@ -66,45 +79,42 @@ namespace WorkoutTimer
             // Timer
             Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
-                if (cts.IsCancellationRequested) return false;
-
                 if (secondsElapsed < maxSeconds)
                 {
-                    secondsElapsed++;
+                    if (cts.IsCancellationRequested) return false;
 
+                    if (!timer_paused)
+                    {
+                        secondsElapsed++;
+                    }
+             
                     // calculate remaining time
                     minutes = (maxSeconds - secondsElapsed) / 60;
                     seconds = (maxSeconds - secondsElapsed) % 60;
 
-                    // Determine if leading zero is needed
-                    string zeroSec = "";
-                    string zeroMin = "";
-                    if (minutes < 10)
-                    {
-                        zeroMin = "0";
-                    }
-                    
-                    if (seconds < 10)
-                    {
-                        zeroSec = "0";
-                    }
-
                     // update time-text
-                    setTime.Text = zeroMin + minutes.ToString() + ":" + zeroSec + seconds.ToString();
-                    
+                    timer.Text = GetLeadingZero(minutes) + minutes.ToString() + ":" + GetLeadingZero(seconds) + seconds.ToString();
+
                     return true;
                 }
-                setTime.Text = "00:00";
+
                 timer_started = false;
                 return false;
             });
         }
 
-        private void StopButton_Clicked (object sender, EventArgs args)
+        private void PauseButton_Clicked (object sender, EventArgs args)
         {
-            Interlocked.Exchange(ref this.cancellation, new CancellationTokenSource()).Cancel();
-            ResetTimer();
-            timer_started = false;
+            if (!timer_paused)
+            {
+                timer_paused = true;
+                pauseButton.Text = "Resume";
+            }
+            else
+            {
+                timer_paused = false;
+                pauseButton.Text = "Pause";
+            }
         }
     }
 }
