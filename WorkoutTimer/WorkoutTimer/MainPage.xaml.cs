@@ -11,8 +11,9 @@ namespace WorkoutTimer
     public partial class MainPage : ContentPage
     {
         SettingsPage settingsPage;
-        bool timer_started = false;
         bool timer_paused = false;
+        bool isSet = true;
+
         private CancellationTokenSource cancellation;
 
         public MainPage()
@@ -21,7 +22,7 @@ namespace WorkoutTimer
 
             settingsPage = new SettingsPage();
             cancellation = new CancellationTokenSource();
-
+            
             ResetTimer();
         }
 
@@ -38,10 +39,20 @@ namespace WorkoutTimer
 
         private void ResetTimerButton_Clicked (object sender, EventArgs e)
         {
-            timer_started = false;
             timer_paused = false;
             pauseButton.IsVisible = false;
+            isSet = true;
             ResetTimer();
+        }
+
+        private int GetIntervalMinutes()
+        {
+            return isSet ? settingsPage.Preferences.SetMinutes : settingsPage.Preferences.PauseMinutes;
+        }
+
+        private int GetIntervalSeconds()
+        {
+            return isSet ? settingsPage.Preferences.SetSeconds : settingsPage.Preferences.PauseSeconds;
         }
 
         private void ResetTimer()
@@ -49,8 +60,9 @@ namespace WorkoutTimer
             Interlocked.Exchange(ref cancellation, new CancellationTokenSource()).Cancel();
 
             // Reset timer-label
-            int minutes = settingsPage.Preferences.SetMinutes;
-            int seconds = settingsPage.Preferences.SetSeconds;
+            int minutes = GetIntervalMinutes();
+            int seconds = GetIntervalSeconds();
+            
             timer.Text = GetLeadingZero(minutes) + minutes.ToString() + ":" + GetLeadingZero(seconds) + seconds.ToString();
 
             // Reset set-label
@@ -60,6 +72,9 @@ namespace WorkoutTimer
             minutes = settingsPage.Preferences.PauseMinutes;
             seconds = settingsPage.Preferences.PauseSeconds;
             pauseTime.Text = GetLeadingZero(minutes) + minutes.ToString() + ":" + GetLeadingZero(seconds) + seconds.ToString();
+
+            // Reset Set Counter
+            count.Text = settingsPage.Preferences.SetCounter.ToString();
         }
 
         private void StartWorkoutButton_Clicked (object sender, EventArgs e)
@@ -67,19 +82,27 @@ namespace WorkoutTimer
             if (timer.Text == "00:00") return;
             if (timer_paused) return;
 
-            timer_started = true;
+            ResetTimer();
+
             pauseButton.IsVisible = true;
 
-            int maxSeconds = (settingsPage.Preferences.SetMinutes * 60) + settingsPage.Preferences.SetSeconds;
-            int minutes, seconds;
+            int minutes = GetIntervalMinutes();
+            int seconds = GetIntervalSeconds();
+            int maxSeconds = (minutes * 60) + seconds;
             int secondsElapsed = 0;
+            int setCounter = settingsPage.Preferences.SetCounter;
 
             CancellationTokenSource cts = this.cancellation; // safe copy
 
             // Timer
             Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
-                if (secondsElapsed < maxSeconds)
+                if (setCounter == 0)
+                {
+                    pauseButton.IsVisible = false;
+                    return false;
+                }
+                else if(secondsElapsed < maxSeconds)
                 {
                     if (cts.IsCancellationRequested) return false;
 
@@ -96,11 +119,38 @@ namespace WorkoutTimer
                     timer.Text = GetLeadingZero(minutes) + minutes.ToString() + ":" + GetLeadingZero(seconds) + seconds.ToString();
 
                     return true;
-                }
+                } 
+                else
+                {
+                    SwitchSet();
 
-                timer_started = false;
-                return false;
+                    minutes = GetIntervalMinutes();
+                    seconds = GetIntervalSeconds();
+
+                    maxSeconds = (minutes * 60) + seconds;
+                    secondsElapsed = 0;
+                    setCounter--;
+                    // update time-text
+                    timer.Text = GetLeadingZero(minutes) + minutes.ToString() + ":" + GetLeadingZero(seconds) + seconds.ToString();
+                    count.Text = setCounter.ToString();
+                    return true;
+                }
             });
+        }
+
+        // switching between set and pause
+        private void SwitchSet ()
+        {
+            if (isSet)
+            {
+                current.Text = "Pause";
+                isSet = false;
+            }
+            else
+            {
+                current.Text = "Set";
+                isSet = true;
+            }
         }
 
         private void PauseButton_Clicked (object sender, EventArgs args)

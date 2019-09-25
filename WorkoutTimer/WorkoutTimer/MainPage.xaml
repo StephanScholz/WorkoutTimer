@@ -9,13 +9,38 @@
     <StackLayout>
         <!-- Place new controls here -->
 
+        <Grid Margin="40, 0">
+            <Label x:Name="current"
+                   Text="Set"
+                   FontSize="30"
+                   HorizontalOptions="Center"
+                   Margin="0, 20, 0, 0"
+                   TextColor="White"
+                   Grid.Column="0"/>
+
+            <StackLayout Margin="0, 20, 0, 0"
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         Spacing="3">
+                <Label Text="Count:"
+                       FontSize="30"
+                       HorizontalOptions="Center"
+                       TextColor="White"/>
+
+                <Label x:Name="count"
+                       Text="0"
+                       FontSize="30"
+                       HorizontalOptions="Center"
+                       TextColor="White"/>
+            </StackLayout>
+            
+        </Grid>
+
         <Label x:Name="timer"
                Text="00:00" 
                FontSize="100"
                HorizontalOptions="Center"
-               Margin="0, 50, 0, 0"
                TextColor="White"/>
-
 
         <Label Text="Set-Time:"
                HorizontalOptions="Center"

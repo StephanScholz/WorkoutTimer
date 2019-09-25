@@ -124,16 +124,32 @@
                 </Frame>
             </Grid>
 
+            <Label Text="Set-Count"
+                       Margin="0"
+                       Parent="0"
+                       TextColor="White"
+                       HorizontalOptions="CenterAndExpand"/>
+
+            <Frame BorderColor="White"
+                       CornerRadius="8"
+                       BackgroundColor="CornflowerBlue"
+                       Margin="0"
+                       Padding="0">
+                
+                <Entry x:Name="entrySetCount"
+                       Text="02"
+                       HorizontalTextAlignment="Center"
+                       MaxLength="2"
+                       Keyboard="Numeric"
+                       Completed="OnSettingsEntryCompleted"
+                       Unfocused="OnSettingsEntryCompleted"/>
+            </Frame>
+            
             <Button Margin="40, 20"
                     x:Name="buttonSettingsConfirm"
                     Clicked="ButtonSettingsConfirm_Clicked"
                     Text="Save Settings"
                     VerticalOptions="Fill"/>
-
-            <Label x:Name="labConfirm"
-                   Text="Not Confirmed"
-                   TextColor="White"
-                   HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

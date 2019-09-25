@@ -27,11 +27,13 @@ namespace WorkoutTimer
 
         private void ButtonSettingsConfirm_Clicked(object sender, EventArgs args)
         {
-            labConfirm.Text = "Confirmed!!!";
-            string[] prefs = new string[]{entryPauseMinutes.Text,
+
+            string[] prefs = new string[]{
+                entryPauseMinutes.Text,
                 entryPauseSeconds.Text,
                 entrySetMinutes.Text,
-                entrySetSeconds.Text };
+                entrySetSeconds.Text,
+                entrySetCount.Text};
 
             if (Preferences.Save(prefs))
             {
