@@ -116,10 +116,16 @@ namespace WorkoutTimer
                     seconds = (maxSeconds - secondsElapsed) % 60;
 
                     // Play Audio
-                    if (seconds <= 3)
+                    if (seconds == 0)
                     {
                         var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-                        player.Load("TimeUp.mp3");
+                        player.Load("audio/endbuzzer.mp3");
+                        player.Play();
+                    }
+                    else if (seconds <= 3)
+                    {
+                        var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                        player.Load("audio/timeup.mp3");
                         player.Play();
                     }
 

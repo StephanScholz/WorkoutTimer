@@ -166,4 +166,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\Audio\TimeUp.mp3" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Audio\EndBuzzer.mp3" />
+  </ItemGroup>
 </Project>
