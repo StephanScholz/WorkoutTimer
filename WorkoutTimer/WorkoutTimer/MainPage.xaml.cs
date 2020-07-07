@@ -115,6 +115,14 @@ namespace WorkoutTimer
                     minutes = (maxSeconds - secondsElapsed) / 60;
                     seconds = (maxSeconds - secondsElapsed) % 60;
 
+                    // Play Audio
+                    if (seconds <= 3)
+                    {
+                        var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                        player.Load("TimeUp.mp3");
+                        player.Play();
+                    }
+
                     // update time-text
                     timer.Text = GetLeadingZero(minutes) + minutes.ToString() + ":" + GetLeadingZero(seconds) + seconds.ToString();
 
@@ -129,7 +137,11 @@ namespace WorkoutTimer
 
                     maxSeconds = (minutes * 60) + seconds;
                     secondsElapsed = 0;
-                    setCounter--;
+                    if (isSet)
+                    {
+                        setCounter--;
+                    }
+                    
                     // update time-text
                     timer.Text = GetLeadingZero(minutes) + minutes.ToString() + ":" + GetLeadingZero(seconds) + seconds.ToString();
                     count.Text = setCounter.ToString();

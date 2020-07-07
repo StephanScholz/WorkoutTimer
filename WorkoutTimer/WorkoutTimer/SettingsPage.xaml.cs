@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Plugin.Toasts;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using WorkoutTimer.Classes;
+using WorkoutTimer.Classes.Messages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -37,8 +41,10 @@ namespace WorkoutTimer
 
             if (Preferences.Save(prefs))
             {
-                DisplayAlert("Success", "All preferences saved!", "OK");
+                Alert.DisplayAlertForXSeconds("Success", "Preferences succesfully saved!", "OK", 3);
             }
+
+            Navigation.PushAsync(new MainPage());
         }
 
         private void OnSettingsEntryCompleted(object sender, EventArgs args)
@@ -75,5 +81,12 @@ namespace WorkoutTimer
                     entry.Text = sb.ToString();
             }
         }
-	}
+
+        private void OnEntryFocusEnter(object sender, EventArgs args)
+        {
+            Entry entry = (Entry)sender;
+
+            entry.Text = "";
+        }
+    }
 }

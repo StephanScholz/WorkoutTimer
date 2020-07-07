@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Plugin.Toasts;
 using UIKit;
+using Xamarin.Forms;
 
 namespace WorkoutTimer.iOS
 {
@@ -23,6 +25,11 @@ namespace WorkoutTimer.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            //Toast Plugin
+            DependencyService.Register<ToastNotification>();
+            ToastNotification.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
