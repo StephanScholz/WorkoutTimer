@@ -18,7 +18,6 @@
                 </Grid.RowDefinitions>
                 <Label Text="Minutes"
                        Margin="0"
-                       Parent="0"
                        TextColor="White"
                        HorizontalOptions="CenterAndExpand"
                        Grid.Row="0"
@@ -26,7 +25,6 @@
 
                 <Label Text="Seconds"
                        Margin="0"
-                       Parent="0"
                        TextColor="White"
                        HorizontalOptions="CenterAndExpand"
                        Grid.Row="0"
@@ -79,7 +77,6 @@
                 </Grid.RowDefinitions>
                 <Label Text="Minutes"
                        Margin="0"
-                       Parent="0"
                        TextColor="White"
                        HorizontalOptions="CenterAndExpand"
                        Grid.Row="0"
@@ -87,7 +84,6 @@
 
                 <Label Text="Seconds"
                        Margin="0"
-                       Parent="0"
                        TextColor="White"
                        HorizontalOptions="CenterAndExpand"
                        Grid.Row="0"
@@ -130,7 +126,6 @@
 
             <Label Text="Set-Count"
                        Margin="0"
-                       Parent="0"
                        TextColor="White"
                        HorizontalOptions="CenterAndExpand"/>
 

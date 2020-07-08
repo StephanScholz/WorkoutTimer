@@ -7,101 +7,45 @@
              BackgroundColor="BlueViolet">
 
     <StackLayout>
-        <!-- Place new controls here -->
+        <!-- Place new Controls here-->
 
-        <Grid Margin="40, 0">
-            <Label x:Name="current"
-                   Text="Set"
+        <Grid Margin="30, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="workoutChooser"
+                   Text="Please choose your workout style:"
                    FontSize="30"
                    HorizontalOptions="Center"
                    Margin="0, 20, 0, 0"
                    TextColor="White"
+                   Grid.Row="0"
                    Grid.Column="0"/>
 
-            <StackLayout Margin="0, 20, 0, 0"
-                         Grid.Column="1"
-                         Orientation="Horizontal"
-                         Spacing="3">
-                <Label Text="Count:"
-                       FontSize="30"
-                       HorizontalOptions="Center"
-                       TextColor="White"/>
+            <RadioButton x:Name="FixedTimeWorkoutRadioButton"
+                         Text="Start a workout with a fixed duration of sets"
+                         TextColor="White"
+                         Grid.Row="1"
+                         Grid.Column="0"/>
 
-                <Label x:Name="count"
-                       Text="0"
-                       FontSize="30"
-                       HorizontalOptions="Center"
-                       TextColor="White"/>
-            </StackLayout>
-            
+            <RadioButton x:Name="StopWatchWorkoutRadioButton"
+                         Text="Start a workout, where you stop the time when you're done"
+                         TextColor="White"
+                         Grid.Row="2"
+                         Grid.Column="0"/>
+
+            <Button x:Name="StartWorkout"
+                    Clicked="StartWorkout_Clicked"
+                    Text="Start Workout"
+                    BackgroundColor="#c7cc2b"
+                    BorderColor="#505216"
+                    BorderWidth="2"
+                    CornerRadius="10"
+                    Margin="40, 20, 40, 0"
+                    HorizontalOptions="Fill"
+                    Grid.Row="3"
+                    Grid.Column="0"/>
         </Grid>
-
-        <Label x:Name="timer"
-               Text="00:00" 
-               FontSize="100"
-               HorizontalOptions="Center"
-               TextColor="White"/>
-
-        <Label Text="Set-Time:"
-               HorizontalOptions="Center"
-               FontSize="30"
-               TextColor="White"/>
-        
-        <Label x:Name="setTime"
-               Text="00:00"
-               FontSize="30"
-               HorizontalOptions="Center"
-               TextColor="White"/>
-
-        <Label Text="Pause-Time:"
-               HorizontalOptions="Center"
-               FontSize="30"
-               TextColor="White"/>
-
-        <Label x:Name="pauseTime"
-               Text="00:00"
-               FontSize="30"
-               HorizontalOptions="Center"
-               TextColor="White"/>
-
-        <Button x:Name="ResetTimerButton"
-                Clicked="ResetTimerButton_Clicked"
-                Text="Reset Timer"
-                BackgroundColor="#c7cc2b"
-                BorderColor="#505216"
-                BorderWidth="2"
-                CornerRadius="10"
-                Margin="40, 20, 40, 0"
-                HorizontalOptions="Fill"/>
-
-        <Button x:Name="startWorkoutButton"
-                Clicked="StartWorkoutButton_Clicked"
-                Text="Start Timer"
-                BackgroundColor="#c7cc2b"
-                BorderColor="#505216"
-                BorderWidth="2"
-                CornerRadius="10"
-                Margin="40, 20"
-                HorizontalOptions="Fill"/>
-
-        <Button x:Name="pauseButton"
-                Clicked="PauseButton_Clicked"
-                IsVisible="False"
-                Text="Pause"
-                BackgroundColor="#c7cc2b"
-                BorderColor="#505216"
-                BorderWidth="2"
-                CornerRadius="10"
-                Margin="40, 0"
-                HorizontalOptions="Fill"/>
-
     </StackLayout>
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Name="settings" 
-                     Order="Secondary" 
-                     Text="Settings" 
-                     Clicked="Settings_Clicked"></ToolbarItem>
-    </ContentPage.ToolbarItems>
 
 </ContentPage>

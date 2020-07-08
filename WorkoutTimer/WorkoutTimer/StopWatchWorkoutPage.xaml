@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WorkoutTimer.StopWatchWorkoutPage"
+             Title="Workout Timer"
+             BackgroundColor="BlueViolet"
+             NavigationPage.HasBackButton="False">
+
+    <StackLayout>
+
+        <Label x:Name="timer"
+               Text="00:00" 
+               FontSize="100"
+               HorizontalOptions="Center"
+               TextColor="White"/>
+
+        <Label Text="Last Set-Time:"
+               HorizontalOptions="Center"
+               FontSize="30"
+               TextColor="White"/>
+
+        <Label x:Name="lastSetTime"
+               Text="00:00"
+               FontSize="30"
+               HorizontalOptions="Center"
+               TextColor="White"/>
+
+        <Button x:Name="startButton"
+                Clicked="StartButton_Clicked"
+                Text="START"
+                BackgroundColor="#c7cc2b"
+                BorderColor="#505216"
+                BorderWidth="2"
+                CornerRadius="10"
+                Margin="40, 20"
+                HorizontalOptions="Fill"/>
+
+        <Button x:Name="stopButton"
+                Clicked="StopButton_Clicked"
+                IsVisible="False"
+                Text="STOP"
+                BackgroundColor="#c7cc2b"
+                BorderColor="#505216"
+                BorderWidth="2"
+                CornerRadius="10"
+                Margin="40, 20"
+                HorizontalOptions="Fill"/>
+
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WorkoutTimer.FixedTimeWorkoutPage"
+             Title="Workout Timer"
+             BackgroundColor="BlueViolet"
+             NavigationPage.HasBackButton="False">
+    <StackLayout>
+        <!-- Place new controls here -->
+
+        <Grid Margin="40, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Margin="0, 20, 0, 0"
+                         Grid.Column="0"
+                         Orientation="Horizontal"
+                         HorizontalOptions="StartAndExpand"
+                         Spacing="3">
+                <Label Text="Current: "
+                   FontSize="25"
+                   HorizontalOptions="Center"
+                   TextColor="White"/>
+                <Label x:Name="current"
+                   Text="Set"
+                   FontSize="25"
+                   HorizontalOptions="Center"
+                   TextColor="White"/>
+            </StackLayout>
+            
+
+            <StackLayout Margin="0, 20, 0, 0"
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalOptions="EndAndExpand"
+                         Spacing="3">
+                <Label Text="Sets: "
+                       FontSize="25"
+                       HorizontalOptions="Center"
+                       TextColor="White"/>
+
+                <Label x:Name="setcount"
+                       Text="0"
+                       FontSize="25"
+                       HorizontalOptions="Center"
+                       TextColor="White"/>
+            </StackLayout>
+
+        </Grid>
+
+        <Label x:Name="timer"
+               Text="00:00" 
+               FontSize="100"
+               HorizontalOptions="Center"
+               TextColor="White"/>
+
+        <Label Text="Set-Time:"
+               HorizontalOptions="Center"
+               FontSize="30"
+               TextColor="White"/>
+
+        <Label x:Name="setTime"
+               Text="00:00"
+               FontSize="30"
+               HorizontalOptions="Center"
+               TextColor="White"/>
+
+        <Label Text="Pause-Time:"
+               HorizontalOptions="Center"
+               FontSize="30"
+               TextColor="White"/>
+
+        <Label x:Name="pauseTime"
+               Text="00:00"
+               FontSize="30"
+               HorizontalOptions="Center"
+               TextColor="White"/>
+
+        <Button x:Name="ResetTimerButton"
+                Clicked="ResetTimerButton_Clicked"
+                Text="Reset Timer"
+                BackgroundColor="#c7cc2b"
+                BorderColor="#505216"
+                BorderWidth="2"
+                CornerRadius="10"
+                Margin="40, 20, 40, 0"
+                HorizontalOptions="Fill"/>
+
+        <Button x:Name="startWorkoutButton"
+                Clicked="StartWorkoutButton_Clicked"
+                Text="Start Timer"
+                BackgroundColor="#c7cc2b"
+                BorderColor="#505216"
+                BorderWidth="2"
+                CornerRadius="10"
+                Margin="40, 20"
+                HorizontalOptions="Fill"/>
+
+        <Button x:Name="pauseButton"
+                Clicked="PauseButton_Clicked"
+                IsVisible="False"
+                Text="Pause"
+                BackgroundColor="#c7cc2b"
+                BorderColor="#505216"
+                BorderWidth="2"
+                CornerRadius="10"
+                Margin="40, 0"
+                HorizontalOptions="Fill"/>
+
+    </StackLayout>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="settings" 
+                     Order="Secondary" 
+                     Text="Settings" 
+                     Clicked="Settings_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+</ContentPage>

@@ -26,6 +26,9 @@ namespace WorkoutTimer.Droid
 
             UserDialogs.Init(this);
 
+            //Use RadioButtons
+            Xamarin.Forms.Forms.SetFlags("RadioButton_Experimental");
+
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

@@ -24,6 +24,9 @@ namespace WorkoutTimer.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            //Use RadioButtons
+            Xamarin.Forms.Forms.SetFlags("RadioButton_Experimental");
+
             global::Xamarin.Forms.Forms.Init();
 
             //Toast Plugin
